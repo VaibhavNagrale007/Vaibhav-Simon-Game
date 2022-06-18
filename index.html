@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vaibhav's Simon Game </title>
+
+    <!--css-->
+    <link rel="stylesheet" href="styles.css">
+
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- bootstrap
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+    
+    <!--icon-->
+    <link rel="icon" href="data:image/png;base64,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">
+
+</head>
+<body>
+
+    
+
+    <div class="container">
+        <h1>Press any key to Start</h1>
+        <div class="row">
+            <div type="button" id="green" class="btn green">
+
+            </div>
+            <div type="button" id="red" class="btn red">
+
+            </div>
+        </div>
+        <div class="row">
+            <div type="button" id="yellow" class="btn yellow">
+
+            </div>
+            <div type="button" id="purple" class="btn purple">
+
+            </div>
+        </div>
+
+        <p>www 👾 Vaibhav's Simon Game 👾 com</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="index.js" charset="utf-8"></script>
+</body>
+</html>
